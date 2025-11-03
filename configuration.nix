@@ -7,16 +7,30 @@
 
 let
   system = "x86_64";
-
-  # build quartus ourselves
-
 in
 {
   # basic environment info
   system.stateVersion = "25.11";
+  nixpkgs.config.allowUnfree = true;
+
+  # keymap settings
 
   # packages to run
-  environment.systemPackages = with pkgs; [ cowsay ];
+  environment.systemPackages = with pkgs; [
+    quartus-prime-lite
+    btop # useful utility
+  ];
+
+  # launching quartus right away
+  services.xserver = {
+    enable = true;
+    displayManager.autoLogin = {
+      enable = true;
+      user = "quartus";
+    };
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
 
   # custom user
   users.users."quartus" = {
