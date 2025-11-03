@@ -21,15 +21,15 @@ in
     btop # useful utility
   ];
 
-  # launching quartus right away
-  services.xserver = {
-    enable = true;
-    displayManager.autoLogin = {
+  # desktop settings
+  services.desktopManager.gnome.enable = true;
+  services.displayManager = {
+    autoLogin = {
       enable = true;
       user = "quartus";
     };
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    # launching gnome desktop maanager
+    gdm.enable = true;
   };
 
   # custom user

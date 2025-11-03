@@ -29,6 +29,8 @@
                   {
                     imports = [ "${modulesPath}/virtualisation/qemu-vm.nix" ];
                     virtualisation.host.pkgs = hostPkgs;
+                    virtualisation.memorySize = 4096;
+                    virtualisation.cores = 3;
                   }
                 )
               ];
